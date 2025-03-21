@@ -1,5 +1,6 @@
 package org.example.expert.domain.common.dto;
 
+import aj.org.objectweb.asm.commons.GeneratorAdapter;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.example.expert.domain.user.enums.UserRole;
@@ -16,13 +17,10 @@ public class AuthUser {
     private final Long id;
     private final String email;
     private final Collection<? extends GrantedAuthority> authorities;
-    private final String nickname;
 
-
-    public AuthUser(Long id, String email, UserRole userRole, String nickname) {
+    public AuthUser(Long id, String email, UserRole userRole) {
         this.id = id;
         this.email = email;
         this.authorities = List.of(new SimpleGrantedAuthority(userRole.name()));
-        this.nickname = nickname;
     }
 }
